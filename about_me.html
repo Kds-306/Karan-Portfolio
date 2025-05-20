@@ -99,7 +99,6 @@
       fill: currentColor;
     }
 
-    /* Profile photo alignment update */
     .about-container {
       display: flex;
       justify-content: space-between;
@@ -118,6 +117,43 @@
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    /* Lightbox styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox:target {
+      display: flex;
+    }
+
+    .lightbox-img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #000;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-size: 3rem;
+      color: white;
+      text-decoration: none;
+      z-index: 1000;
     }
   </style>
 </head>
@@ -145,7 +181,17 @@
         <p><strong>Phone:</strong> +91 8080853575</p>
         <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/karan-salunkhe-416197347" target="_blank">karan-salunkhe</a></p>
       </div>
-      <img src="myphoto.jpeg" alt="Karan Salunkhe" class="profile-photo-right" />
+
+      <!-- Clickable profile photo -->
+      <a href="#enlarged-photo">
+        <img src="myphoto.jpeg" alt="Karan Salunkhe" class="profile-photo-right" />
+      </a>
+
+      <!-- Lightbox modal -->
+      <div id="enlarged-photo" class="lightbox">
+        <a href="#about" class="lightbox-close">&times;</a>
+        <img src="myphoto.jpeg" alt="Karan Salunkhe - Enlarged" class="lightbox-img" />
+      </div>
     </div>
   </section>
 
