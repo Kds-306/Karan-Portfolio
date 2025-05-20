@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,16 +13,16 @@
       color: #000;
     }
 
-     header {
-            background: url('photo.jpg') no-repeat center center; /* Replace with your image URL */
-            background-size: cover;
-            background-position: top right;		
-			filter: brightness(1.1) contrast(1.2);
-            color: #fff;
-            padding: 10rem;
-            text-align: center;
-            height: 150px; /* Set a fixed height for the header */
-        }
+    header {
+      background: url('photo.jpg') no-repeat center center;
+      background-size: cover;
+      background-position: top right;
+      filter: brightness(1.1) contrast(1.2);
+      color: #fff;
+      padding: 10rem;
+      text-align: center;
+      height: 150px;
+    }
 
     nav {
       display: flex;
@@ -51,9 +50,11 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-	 h1{
-		   padding:2rem;
-		   }
+
+    h1 {
+      padding: 2rem;
+      text-align: left;
+    }
 
     h2 {
       color: #333;
@@ -65,40 +66,66 @@
     ul {
       padding-left: 1.2rem;
     }
-        footer {
-            background: #000;
-            color: white;
-            text-align: left;
-            padding: 1rem 0.5rem;
-            margin-top: 1rem;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            position: relative;
-        }
-       .footer-icons {
-            margin-top: 1.5rem;
-            display: flex;
-            gap: 1.5rem;
-        }
-       .footer-icons a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-       .footer-icons a:hover {
-            color: #0a66c2; /* LinkedIn Blue for hover */
-        }
-       .footer-icons svg {
-            width: 28px;
-            height: 28px;
-            fill: currentColor;
-        }
 
+    footer {
+      background: #000;
+      color: white;
+      text-align: left;
+      padding: 1rem 0.5rem;
+      margin-top: 1rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .footer-icons {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-icons a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-icons a:hover {
+      color: #0a66c2;
+    }
+
+    .footer-icons svg {
+      width: 28px;
+      height: 28px;
+      fill: currentColor;
+    }
+
+    #adminPanel {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem 2rem;
+      display: block; /* Changed to block to show the panel */
+      background: #eef;
+      border-radius: 10px;
+    }
+
+    #adminPanel input, #adminPanel textarea {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      font-family: inherit;
+    }
+
+    #adminPanel button {
+      margin-right: 1rem;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
   </style>
 </head>
 
 <body>
   <header>
-    <h1 style="text-align:left;">Karan Dilip Salunkhe</h1>
+    <h1>Karan Dilip Salunkhe</h1>
   </header>
 
   <nav>
@@ -108,32 +135,24 @@
     <a href="projects.html">Projects</a>
   </nav>
 
-
   <section id="projects">
     <h2>Academic Projects</h2>
-    <ul>
-      <li>
-        <strong>Library Management System (June 2023 – March 2024)</strong><br/><br/>
-		<b>Used Language:</b>Java<br/>
-        <b>Tools:</b> Eclipse, Notepad++, MySQL Workbench<br/><br/>
-        It is desktop based project for libaray admin.An management system is ERP software that helps in simplifying the daily oprations of the Library.<br/>The purpose of libaray management system is to manage & track the daily work of the libaray such an issuing book, return books, due calculation, etc.<br/>
-      </li><br/>
-      <li>
-        <strong>The School Website (June 2022 – March 2023)</strong><br/><br/>
-		<b>Used Languages:</b>HTML, CSS, JavaScript, PHP<br/>
-        <b>Tools:</b> Notepad++, Xampp<br/><br/>
-          The School Website is designed for Z.P.School Nigadi the aim of this project is to create user friendly website that is accessible for everyone from everywhere.<br/>The entire project was Developed using the HTML, CSS, JavaScript, and PHP programming Languages.<br/>This system showcase teaching philosophy, approach and style as well as share schools lesson plans and assessments.<br/>
-      </li><br/>
-      <li>
-        <strong>Contact Management System (June 2021 – March 2022)</strong><br/><br/>
-		<b>Used Language:</b>C Programming Language<br/>
-        <b>Tools:</b> Turbo C<br/><br/>
-        The main objective of the project on Contact Management System is to manage the details of contact, Credentials, Emails. It enables users to easily store and find contact information.<br/> The system makes it easy to keep records of each person. The entire project was developed using the C Programming language.<br/>
-      </li>
-    </ul>
+    <ul id="projectList"></ul>
   </section>
 
-    <footer>
+  <!-- Admin Panel -->
+  <div id="adminPanel">
+    <h3>Admin Panel</h3>
+    <label>Title:<br/><input type="text" id="projTitle"></label>
+    <label>Languages:<br/><input type="text" id="projLang"></label>
+    <label>Tools:<br/><input type="text" id="projTools"></label>
+    <label>Description:<br/><textarea id="projDesc"></textarea></label>
+    <label>GitHub Link (optional):<br/><input type="text" id="projGitHub"></label> <!-- New GitHub link field -->
+    <button onclick="addProject()">Add Project</button>
+    <button onclick="deleteLastProject()">Delete Last Project</button>
+  </div>
+
+  <footer>
     <p>&copy; 2025 Karan Salunkhe. All rights reserved.</p>
     <div class="footer-icons">
         <a href="https://www.linkedin.com/in/karan-salunkhe-416197347" target="_blank" aria-label="LinkedIn">
@@ -154,6 +173,90 @@
     </div>
 </footer>
 
-</body>
+  <!-- JavaScript Section -->
+  <script>
+    const projects = [
+      {
+        title: "Library Management System (June 2023 – March 2024)",
+        languages: "Java",
+        tools: "Eclipse, Notepad++, MySQL Workbench",
+        description: "A desktop-based project for library admin. This ERP software simplifies daily operations like issuing books, returning them, and calculating dues.",
+        github: "" // Added GitHub link property
+      },
+      {
+        title: "The School Website (June 2022 – March 2023)",
+        languages: "HTML, CSS, JavaScript, PHP",
+        tools: "Notepad++, XAMPP",
+        description: "Designed for Z.P. School Nigadi. A user-friendly website accessible from anywhere, showcasing philosophy, lesson plans, and school activities.",
+        github: "" // Added GitHub link property
+      },
+      {
+        title: "Contact Management System (June 2021 – March 2022)",
+        languages: "C Programming Language",
+        tools: "Turbo C",
+        description: "Manages contact details, credentials, and emails. Developed in C, this system simplifies storing and retrieving contact information.",
+        github: "" // Added GitHub link property
+      }
+    ];
 
+    function renderProjects() {
+      const list = document.getElementById('projectList');
+      list.innerHTML = '';
+      projects.forEach(p => {
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>${p.title}</strong><br/><br/>
+          <b>Used Language(s):</b> ${p.languages}<br/>
+          <b>Tools:</b> ${p.tools}<br/><br/>${p.description}<br/>
+          ${p.github ? `<b>GitHub Link:</b> <a href="${p.github}" target="_blank">${p.github}</a><br/>` : ''}`; // Display GitHub link if available
+        li.style.marginBottom = '1.5rem';
+        list.appendChild(li);
+      });
+    }
+
+    function addProject() {
+      const adminPassword = "Kara@234";
+      const access = prompt("Enter password to add a project:");
+      
+      if (access === adminPassword) {
+        const title = document.getElementById('projTitle').value.trim();
+        const languages = document.getElementById('projLang').value.trim();
+        const tools = document.getElementById('projTools').value.trim();
+        const description = document.getElementById('projDesc').value.trim();
+        const github = document.getElementById('projGitHub').value.trim(); // Get GitHub link
+
+        if (title && languages && tools && description) {
+          projects.push({ title, languages, tools, description, github }); // Include GitHub link
+          renderProjects();
+          document.getElementById('projTitle').value = '';
+          document.getElementById('projLang').value = '';
+          document.getElementById('projTools').value = '';
+          document.getElementById('projDesc').value = '';
+          document.getElementById('projGitHub').value = ''; // Clear GitHub link input
+        } else {
+          alert("Please fill all fields.");
+        }
+      } else {
+        alert("Incorrect password.");
+      }
+    }
+
+    function deleteLastProject() {
+      const adminPassword = "Kara@234";
+      const access = prompt("Enter password to delete the last project:");
+      
+      if (access === adminPassword) {
+        if (projects.length > 0 && confirm("Delete the last project?")) {
+          projects.pop();
+          renderProjects();
+        }
+      } else {
+        alert("Incorrect password.");
+      }
+    }
+
+    // Initial rendering of projects
+    renderProjects();
+  </script>
+
+</body>
 </html>
